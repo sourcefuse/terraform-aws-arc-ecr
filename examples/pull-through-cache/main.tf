@@ -68,7 +68,7 @@ resource "random_password" "dockerhub_password" {
 
 ## Resource: AWS Secrets Manager Secret
 resource "aws_secretsmanager_secret" "dockerhub" {
-  name = "ecr-pullthroughcache/dockerhub"
+  name = "ecr-pullthroughcache/dockerhub-${random_string.dockerhub_username.result}"
 }
 
 ## Resource: AWS Secrets Manager Secret Version
