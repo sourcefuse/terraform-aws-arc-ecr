@@ -1,3 +1,6 @@
+#################################################################
+# Module: Tags
+#################################################################
 module "tags" {
   source      = "sourcefuse/arc-tags/aws"
   version     = "1.2.3"
@@ -12,6 +15,9 @@ module "tags" {
 
 data "aws_caller_identity" "current" {}
 
+################################################################################
+# Locals: Templates - Purpose: Define lifecycle and repository policies for ECR
+################################################################################
 locals {
   template_lifecycle_policy = jsonencode({
     rules = [
@@ -49,6 +55,9 @@ locals {
   })
 }
 
+#################################################################
+# Module: ECR
+#################################################################
 module "ecr" {
   source = "../../"
 
@@ -82,7 +91,9 @@ module "ecr" {
 }
 
 
-
+#################################################################
+# IAM Role for ECR Template
+#################################################################
 resource "aws_iam_role" "ecr_template_role" {
   name = "ecr-template-role"
 
@@ -100,6 +111,9 @@ resource "aws_iam_role" "ecr_template_role" {
   })
 }
 
+#################################################################
+# IAM Policy for ECR Template Role
+#################################################################
 resource "aws_iam_policy" "ecr_template_policy" {
   name        = "ECRRepositoryTemplatePolicy"
   description = "Custom policy for ECR repository creation template role"
@@ -125,8 +139,9 @@ resource "aws_iam_policy" "ecr_template_policy" {
   })
 }
 
-
-
+#################################################################
+# IAM Role Policy Attachment
+#################################################################
 resource "aws_iam_role_policy_attachment" "ecr_template_role_attach" {
   role       = aws_iam_role.ecr_template_role.name
   policy_arn = aws_iam_policy.ecr_template_policy.arn

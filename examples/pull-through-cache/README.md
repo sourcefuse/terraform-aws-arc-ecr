@@ -70,6 +70,7 @@ docker pull <account-id>.dkr.ecr.<region>.amazonaws.com/cross-account/myorg/my-a
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.3, < 2.0.0 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.0, < 7.0 |
+| <a name="requirement_random"></a> [random](#requirement\_random) | ~> 3.5 |
 
 ## Providers
 
@@ -93,7 +94,6 @@ docker pull <account-id>.dkr.ecr.<region>.amazonaws.com/cross-account/myorg/my-a
 | [aws_secretsmanager_secret_version.dockerhub](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/secretsmanager_secret_version) | resource |
 | [random_password.dockerhub_password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
 | [random_string.dockerhub_username](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
-| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 
 ## Inputs
 

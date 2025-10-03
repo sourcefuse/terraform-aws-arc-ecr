@@ -1,3 +1,6 @@
+#################################################################
+# Module: Tags
+#################################################################
 module "tags" {
   source      = "sourcefuse/arc-tags/aws"
   version     = "1.2.3"
@@ -10,8 +13,9 @@ module "tags" {
 }
 
 
-data "aws_caller_identity" "current" {}
-
+#################################################################
+# Module: ECR
+#################################################################
 module "ecr" {
   source = "../../"
 
@@ -42,15 +46,19 @@ module "ecr" {
   tags = module.tags.tags
 }
 
+# data "aws_caller_identity" "current" {}
 
+## Resource: Random DockerHub Username
 resource "random_string" "dockerhub_username" {
   length  = 12
   upper   = true
   lower   = true
-  numeric  = true
+  numeric = true
   special = false
 }
 
+
+## Resource: Random DockerHub Password
 resource "random_password" "dockerhub_password" {
   length           = 20
   special          = true
@@ -58,15 +66,16 @@ resource "random_password" "dockerhub_password" {
 }
 
 
+## Resource: AWS Secrets Manager Secret
 resource "aws_secretsmanager_secret" "dockerhub" {
   name = "ecr-pullthroughcache/dockerhub"
 }
 
+## Resource: AWS Secrets Manager Secret Version
 resource "aws_secretsmanager_secret_version" "dockerhub" {
-  secret_id     = aws_secretsmanager_secret.dockerhub.id
+  secret_id = aws_secretsmanager_secret.dockerhub.id
   secret_string = jsonencode({
     username = random_string.dockerhub_username.result
-    password = random_password.dockerhub_password.result  
+    password = random_password.dockerhub_password.result
   })
 }
-

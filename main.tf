@@ -1,4 +1,6 @@
+#########################################
 ## ECR Account Setting
+#########################################
 resource "aws_ecr_account_setting" "this" {
   count = var.account_setting_name != null ? 1 : 0
 
@@ -6,7 +8,9 @@ resource "aws_ecr_account_setting" "this" {
   value = var.account_setting_value
 }
 
+#########################################
 ## ECR Repositories
+#########################################
 resource "aws_ecr_repository" "this" {
   for_each = var.repositories
 
@@ -34,7 +38,9 @@ resource "aws_ecr_repository" "this" {
   tags = merge(var.tags, each.value.repository_tags)
 }
 
+#########################################
 ## ECR Lifecycle Policies
+#########################################
 resource "aws_ecr_lifecycle_policy" "this" {
   for_each = {
     for k, v in var.repositories : k => v
@@ -45,7 +51,9 @@ resource "aws_ecr_lifecycle_policy" "this" {
   policy     = each.value.lifecycle_policy
 }
 
+#########################################
 ## ECR Repository Policies
+#########################################
 resource "aws_ecr_repository_policy" "this" {
   for_each = {
     for k, v in var.repositories : k => v
@@ -56,14 +64,18 @@ resource "aws_ecr_repository_policy" "this" {
   policy     = each.value.repository_policy
 }
 
+#########################################
 ## ECR Registry Policy
+#########################################
 resource "aws_ecr_registry_policy" "this" {
   count = var.registry_policy != null ? 1 : 0
 
   policy = var.registry_policy
 }
 
+#########################################
 ## ECR Registry Scanning Configuration
+#########################################
 resource "aws_ecr_registry_scanning_configuration" "this" {
   count = var.enable_registry_scanning ? 1 : 0
 
@@ -85,7 +97,9 @@ resource "aws_ecr_registry_scanning_configuration" "this" {
   }
 }
 
+#########################################
 ## ECR Replication Configuration
+#########################################
 resource "aws_ecr_replication_configuration" "this" {
   count = var.enable_replication ? 1 : 0
 
@@ -116,7 +130,9 @@ resource "aws_ecr_replication_configuration" "this" {
   }
 }
 
+#########################################
 # ECR Pull Through Cache Rules
+#########################################
 resource "aws_ecr_pull_through_cache_rule" "this" {
   for_each = var.pull_through_cache_rules
 
@@ -127,7 +143,9 @@ resource "aws_ecr_pull_through_cache_rule" "this" {
   upstream_repository_prefix = each.value.upstream_repository_prefix
 }
 
+#########################################
 # ECR Repository Creation Template
+#########################################
 resource "aws_ecr_repository_creation_template" "this" {
   count = var.repository_creation_template != null ? 1 : 0
 
