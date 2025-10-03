@@ -40,15 +40,11 @@ variable "repositories" {
   }
 }
 
-variable "enable_registry_scanning" {
-  description = "Enable registry scanning configuration"
-  type        = bool
-  default     = false
-}
 
 variable "registry_scanning_configuration" {
   description = "Registry scanning configuration"
   type = object({
+    enabled   = bool
     scan_type = optional(string, "ENHANCED")
     rules = optional(list(object({
       scan_frequency = string
@@ -59,6 +55,7 @@ variable "registry_scanning_configuration" {
     })), [])
   })
   default = {
+    enabled   = false
     scan_type = "ENHANCED"
     rules     = []
   }
@@ -152,16 +149,16 @@ variable "repository_creation_template" {
   }
 }
 
-variable "account_setting_name" {
-  description = "ECR account setting name"
-  type        = string
-  default     = null
-}
-
-variable "account_setting_value" {
-  description = "ECR account setting value"
-  type        = string
-  default     = null
+variable "account_setting" {
+  description = "ECR account setting"
+  type = object({
+    name  = string
+    value = string
+  })
+  default = {
+    name  = null
+    value = null
+  }
 }
 
 variable "tags" {

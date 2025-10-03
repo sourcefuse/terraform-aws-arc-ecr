@@ -2,10 +2,10 @@
 ## ECR Account Setting
 #########################################
 resource "aws_ecr_account_setting" "this" {
-  count = var.account_setting_name != null ? 1 : 0
+  count = var.account_setting.name != null ? 1 : 0
 
-  name  = var.account_setting_name
-  value = var.account_setting_value
+  name  = var.account_setting.name
+  value = var.account_setting.value
 }
 
 #########################################
@@ -77,7 +77,7 @@ resource "aws_ecr_registry_policy" "this" {
 ## ECR Registry Scanning Configuration
 #########################################
 resource "aws_ecr_registry_scanning_configuration" "this" {
-  count = var.enable_registry_scanning ? 1 : 0
+  count = var.registry_scanning_configuration.enabled ? 1 : 0
 
   scan_type = var.registry_scanning_configuration.scan_type
 

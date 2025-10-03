@@ -84,7 +84,6 @@ For a list of input variables, see the README [Inputs](https://github.com/source
 
 Key variables include:
 - `repositories` - Map of ECR repositories to create
-- `enable_registry_scanning` - Enable enhanced registry scanning
 - `enable_replication` - Enable cross-region/account replication
 - `pull_through_cache_rules` - Configure pull-through cache rules
 - `repository_creation_template` - Set organization-wide defaults

@@ -26,8 +26,8 @@ module "ecr" {
     }
   }
 
-  enable_registry_scanning = true
   registry_scanning_configuration = {
+    enabled   = true
     scan_type = "ENHANCED"
     rules = [
       {
