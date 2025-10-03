@@ -35,7 +35,7 @@ resource "aws_ecr_repository" "this" {
     }
   }
 
-  tags = merge(var.tags, each.value.repository_tags)
+  tags = var.tags
 }
 
 #########################################
