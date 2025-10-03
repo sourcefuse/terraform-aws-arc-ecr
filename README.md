@@ -25,7 +25,8 @@ SourceFuse AWS Reference Architecture (ARC) Terraform module for managing the EC
 
 ```hcl
 module "ecr" {
-  source = "./modules/ecr"
+  source      = "sourcefuse/arc-ecr/aws"
+  version     = "0.0.1"
 
   # Basic Configuration
   repositories = {

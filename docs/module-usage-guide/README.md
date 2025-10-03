@@ -28,8 +28,8 @@ To use the module in your Terraform configuration, include the following source 
 ```hcl
 module "arc-ecr" {
   source  = "sourcefuse/arc-ecr/aws"
-  version = "1.0.0"
-  
+  version = "0.0.1"
+
   # Basic repository configuration
   repositories = {
     "my-app" = {
@@ -38,7 +38,7 @@ module "arc-ecr" {
       encryption_type     = "AES256"
     }
   }
-  
+
   # Global tags
   tags = {
     Environment = "production"
