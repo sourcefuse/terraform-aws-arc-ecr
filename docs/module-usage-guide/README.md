@@ -82,12 +82,6 @@ Ensure that the AWS credentials used to execute Terraform have the necessary per
 
 For a list of input variables, see the README [Inputs](https://github.com/sourcefuse/terraform-aws-arc-ecr#inputs) section.
 
-Key variables include:
-- `repositories` - Map of ECR repositories to create
-- `enable_replication` - Enable cross-region/account replication
-- `pull_through_cache_rules` - Configure pull-through cache rules
-- `repository_creation_template` - Set organization-wide defaults
-
 ### Output Values
 
 For a list of outputs, see the README [Outputs](https://github.com/sourcefuse/terraform-aws-arc-ecr#outputs) section.

@@ -39,10 +39,10 @@ module "ecr" {
   }
 
   # Optional Features
-  enable_replication      = true
 
   replication_configuration = {
-    rules = [
+    enabled = true
+    rules   = [
       {
         destinations = [
           {
@@ -118,11 +118,10 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_account_setting"></a> [account\_setting](#input\_account\_setting) | ECR account setting | <pre>object({<br/>    name  = string<br/>    value = string<br/>  })</pre> | <pre>{<br/>  "name": null,<br/>  "value": null<br/>}</pre> | no |
-| <a name="input_enable_replication"></a> [enable\_replication](#input\_enable\_replication) | Enable replication configuration | `bool` | `false` | no |
 | <a name="input_pull_through_cache_rules"></a> [pull\_through\_cache\_rules](#input\_pull\_through\_cache\_rules) | Pull through cache rules | <pre>map(object({<br/>    ecr_repository_prefix      = string<br/>    upstream_registry_url      = string<br/>    credential_arn             = optional(string)<br/>    custom_role_arn            = optional(string)<br/>    upstream_repository_prefix = optional(string)<br/>  }))</pre> | `{}` | no |
 | <a name="input_registry_policy"></a> [registry\_policy](#input\_registry\_policy) | Registry policy JSON | `string` | `null` | no |
 | <a name="input_registry_scanning_configuration"></a> [registry\_scanning\_configuration](#input\_registry\_scanning\_configuration) | Registry scanning configuration | <pre>object({<br/>    enabled   = bool<br/>    scan_type = optional(string, "ENHANCED")<br/>    rules = optional(list(object({<br/>      scan_frequency = string<br/>      repository_filters = list(object({<br/>        filter      = string<br/>        filter_type = string<br/>      }))<br/>    })), [])<br/>  })</pre> | <pre>{<br/>  "enabled": false,<br/>  "rules": [],<br/>  "scan_type": "ENHANCED"<br/>}</pre> | no |
-| <a name="input_replication_configuration"></a> [replication\_configuration](#input\_replication\_configuration) | Replication configuration for ECR registry | <pre>object({<br/>    rules = list(object({<br/>      destinations = list(object({<br/>        region      = string<br/>        registry_id = string<br/>      }))<br/>      repository_filters = optional(list(object({<br/>        filter      = string<br/>        filter_type = string<br/>      })), [])<br/>    }))<br/>  })</pre> | <pre>{<br/>  "rules": []<br/>}</pre> | no |
+| <a name="input_replication_configuration"></a> [replication\_configuration](#input\_replication\_configuration) | Replication configuration for ECR registry | <pre>object({<br/>    enabled = bool # Enable replication configuration<br/>    rules = list(object({<br/>      destinations = list(object({<br/>        region      = string<br/>        registry_id = string<br/>      }))<br/>      repository_filters = optional(list(object({<br/>        filter      = string<br/>        filter_type = string<br/>      })), [])<br/>    }))<br/>  })</pre> | <pre>{<br/>  "enabled": false,<br/>  "rules": []<br/>}</pre> | no |
 | <a name="input_repositories"></a> [repositories](#input\_repositories) | Map of ECR repositories to create | <pre>map(object({<br/>    force_delete         = optional(bool, false)<br/>    image_tag_mutability = optional(string, "MUTABLE")<br/>    encryption_type      = optional(string, "AES256")<br/>    kms_key              = optional(string)<br/>    scan_on_push         = optional(bool, true)<br/>    lifecycle_policy     = optional(string)<br/>    repository_policy    = optional(string)<br/>    repository_tags      = optional(map(string), {})<br/>    image_tag_mutability_exclusion_filters = optional(list(object({<br/>      filter      = string<br/>      filter_type = string<br/>    })), [])<br/>  }))</pre> | `{}` | no |
 | <a name="input_repository_creation_template"></a> [repository\_creation\_template](#input\_repository\_creation\_template) | Repository creation template configuration | <pre>object({<br/>    prefix               = string<br/>    applied_for          = list(string)<br/>    custom_role_arn      = optional(string)<br/>    description          = optional(string)<br/>    encryption_type      = optional(string, "AES256")<br/>    kms_key              = optional(string)<br/>    image_tag_mutability = optional(string, "MUTABLE")<br/>    lifecycle_policy     = optional(string)<br/>    repository_policy    = optional(string)<br/>    resource_tags        = optional(map(string), {})<br/>    image_tag_mutability_exclusion_filters = optional(list(object({<br/>      filter      = string<br/>      filter_type = string<br/>    })), [])<br/>  })</pre> | `null` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Tags to apply to all resources | `map(string)` | `{}` | no |

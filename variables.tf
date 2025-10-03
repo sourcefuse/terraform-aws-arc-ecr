@@ -61,15 +61,11 @@ variable "registry_scanning_configuration" {
   }
 }
 
-variable "enable_replication" {
-  description = "Enable replication configuration"
-  type        = bool
-  default     = false
-}
 
 variable "replication_configuration" {
   description = "Replication configuration for ECR registry"
   type = object({
+    enabled = bool # Enable replication configuration
     rules = list(object({
       destinations = list(object({
         region      = string
@@ -82,7 +78,8 @@ variable "replication_configuration" {
     }))
   })
   default = {
-    rules = []
+    enabled = false
+    rules   = []
   }
 }
 

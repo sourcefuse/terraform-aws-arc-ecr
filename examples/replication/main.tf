@@ -29,8 +29,8 @@ module "ecr" {
     }
   }
 
-  enable_replication = true
   replication_configuration = {
+    enabled = true
     rules = [
       {
         destinations = [

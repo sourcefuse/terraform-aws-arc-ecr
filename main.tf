@@ -101,7 +101,7 @@ resource "aws_ecr_registry_scanning_configuration" "this" {
 ## ECR Replication Configuration
 #########################################
 resource "aws_ecr_replication_configuration" "this" {
-  count = var.enable_replication ? 1 : 0
+  count = var.replication_configuration.enabled ? 1 : 0
 
   dynamic "replication_configuration" {
     for_each = [var.replication_configuration]
