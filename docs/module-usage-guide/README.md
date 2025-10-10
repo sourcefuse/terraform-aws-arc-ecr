@@ -148,9 +148,6 @@ See [pull-through-cache example](https://github.com/sourcefuse/terraform-aws-arc
 2. **Cross-Account Replication**: Verify IAM permissions and registry policies for cross-account scenarios
 3. **Pull-Through Cache**: Check upstream registry connectivity and authentication credentials
 
-### Reporting Issues
-
-If you encounter a bug or issue, please report it on the [GitHub repository](https://github.com/sourcefuse/terraform-aws-arc-ecr).
 
 ## Security Considerations
 
@@ -180,7 +177,7 @@ Contribute to the module by following the guidelines outlined in the [CONTRIBUTI
 
 ### Reporting Bugs and Issues
 
-If you find a bug or issue, report it on the [GitHub repository](https://github.com/sourcefuse/terraform-aws-arc-ecr).
+If you find a bug or issue, report it on the [GitHub repository](https://github.com/sourcefuse/terraform-aws-arc-ecr/issues).
 
 ## License
 

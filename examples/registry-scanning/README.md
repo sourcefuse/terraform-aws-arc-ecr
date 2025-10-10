@@ -53,5 +53,7 @@ No resources.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_repository_url"></a> [repository\_url](#output\_repository\_url) | URL of the ECR repository |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

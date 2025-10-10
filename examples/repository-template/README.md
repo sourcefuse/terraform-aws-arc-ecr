@@ -36,13 +36,13 @@ This example demonstrates how to create a comprehensive repository creation temp
 
 ## Features Demonstrated
 
-- ✅ All repository creation template arguments
-- ✅ KMS encryption configuration
-- ✅ Image tag mutability exclusion filters
-- ✅ Custom lifecycle policy
-- ✅ Repository policy for cross-account access
-- ✅ Resource tags for template-created repositories
-- ✅ Multiple applied_for scenarios
+- All repository creation template arguments
+- KMS encryption configuration
+- Image tag mutability exclusion filters
+- Custom lifecycle policy
+- Repository policy for cross-account access
+- Resource tags for template-created repositories
+- Multiple applied_for scenarios
 
 ## Usage
 

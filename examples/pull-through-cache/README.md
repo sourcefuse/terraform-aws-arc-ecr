@@ -25,12 +25,12 @@ This example demonstrates how to set up comprehensive ECR pull-through cache rul
 
 ## Features Demonstrated
 
-- ✅ All pull through cache rule arguments
-- ✅ Public registry caching (Docker Hub, ECR Public)
-- ✅ Cross-account ECR private registry caching
-- ✅ Credential-based authentication
-- ✅ Custom IAM roles for cross-account access
-- ✅ Upstream repository prefix filtering
+- All pull through cache rule arguments
+- Public registry caching (Docker Hub, ECR Public)
+- Cross-account ECR private registry caching
+- Credential-based authentication
+- Custom IAM roles for cross-account access
+- Upstream repository prefix filtering
 
 ## Usage
 

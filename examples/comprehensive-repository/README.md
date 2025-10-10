@@ -21,13 +21,13 @@ This example demonstrates all available ECR repository arguments and features.
 
 ## Features Demonstrated
 
-- ✅ All ECR repository arguments
-- ✅ Mixed tag mutability settings
-- ✅ Image tag mutability exclusion filters
-- ✅ Different encryption types (KMS vs AES256)
-- ✅ Per-repository custom tags
-- ✅ Force delete configuration
-- ✅ Image scanning configuration
+- All ECR repository arguments
+- Mixed tag mutability settings
+- Image tag mutability exclusion filters
+- Different encryption types (KMS vs AES256)
+- Per-repository custom tags
+- Force delete configuration
+- Image scanning configuration
 
 ## Usage
 
