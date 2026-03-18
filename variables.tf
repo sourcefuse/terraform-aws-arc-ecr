@@ -122,24 +122,24 @@ variable "repository_creation_template" {
   default = null
 
   validation {
-    condition = var.repository_creation_template == null || alltrue([
+    condition = var.repository_creation_template == null ? true : alltrue([
       for applied in var.repository_creation_template.applied_for : contains(["PULL_THROUGH_CACHE", "REPLICATION"], applied)
     ])
     error_message = "applied_for must contain one or more of: PULL_THROUGH_CACHE, REPLICATION."
   }
 
   validation {
-    condition     = var.repository_creation_template == null || contains(["MUTABLE", "IMMUTABLE", "IMMUTABLE_WITH_EXCLUSION", "MUTABLE_WITH_EXCLUSION"], var.repository_creation_template.image_tag_mutability)
+    condition     = var.repository_creation_template == null ? true : contains(["MUTABLE", "IMMUTABLE", "IMMUTABLE_WITH_EXCLUSION", "MUTABLE_WITH_EXCLUSION"], var.repository_creation_template.image_tag_mutability)
     error_message = "image_tag_mutability must be one of: MUTABLE, IMMUTABLE, IMMUTABLE_WITH_EXCLUSION, or MUTABLE_WITH_EXCLUSION."
   }
 
   validation {
-    condition     = var.repository_creation_template == null || contains(["AES256", "KMS"], var.repository_creation_template.encryption_type)
+    condition     = var.repository_creation_template == null ? true : contains(["AES256", "KMS"], var.repository_creation_template.encryption_type)
     error_message = "encryption_type must be either AES256 or KMS."
   }
 
   validation {
-    condition = var.repository_creation_template == null || alltrue([
+    condition = var.repository_creation_template == null ? true : alltrue([
       for filter in var.repository_creation_template.image_tag_mutability_exclusion_filters : filter.filter_type == "WILDCARD"
     ])
     error_message = "image_tag_mutability_exclusion_filter filter_type must be WILDCARD."
