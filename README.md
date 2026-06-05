@@ -1,8 +1,21 @@
-![Module Structure](./static/ecr.png)
+![Module Banner](./static/ecr.png)
 
 # [terraform-aws-arc-ecr](https://github.com/sourcefuse/terraform-aws-arc-ecr)
 
-<a href="https://github.com/sourcefuse/terraform-aws-arc-ecr/releases/latest"><img src="https://img.shields.io/github/release/sourcefuse/terraform-aws-arc-ecr.svg?style=for-the-badge" alt="Latest Release"/></a> <a href="https://github.com/sourcefuse/terraform-aws-arc-ecr/commits"><img src="https://img.shields.io/github/last-commit/sourcefuse/terraform-aws-arc-ecr.svg?style=for-the-badge" alt="Last Updated"/></a> ![Terraform](https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
+> **Module:** `sourcefuse/arc-ecr/aws`
+
+> **Registry:** [https://registry.terraform.io/modules/sourcefuse/arc-ecr/aws](https://registry.terraform.io/modules/sourcefuse/arc-ecr/aws)
+
+> **Category:** Containers / Registry
+
+
+
+> **Source:** [https://github.com/sourcefuse/terraform-aws-arc-ecr](https://github.com/sourcefuse/terraform-aws-arc-ecr)
+
+[![Latest Release](https://img.shields.io/github/release/sourcefuse/terraform-aws-arc-ecr.svg?style=for-the-badge)](https://github.com/sourcefuse/terraform-aws-arc-ecr/releases/latest)
+[![Last Updated](https://img.shields.io/github/last-commit/sourcefuse/terraform-aws-arc-ecr.svg?style=for-the-badge)](https://github.com/sourcefuse/terraform-aws-arc-ecr/commits)
+![Terraform](https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
 
 [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=sourcefuse_terraform-aws-arc-ecr&token=470128924743a0aace992ff0eb4f2460199e267f)](https://sonarcloud.io/summary/new_code?id=sourcefuse_terraform-aws-arc-ecr)
 
@@ -21,7 +34,19 @@ SourceFuse AWS Reference Architecture (ARC) Terraform module for managing the EC
 - **Flexible Tagging**: Consistent tagging across all resources
 - **Production Ready**: Follows AWS Well-Architected principles
 
-## Usage
+## What It Does
+
+- Multiple ECR repositories in a single module call
+- Lifecycle policies for image retention
+- Cross-account repository access policies
+- Cross-region and cross-account replication
+- KMS encryption for images
+- Image tag mutability control
+- Scan on push configuration
+
+For more information about this repository and its usage, please see [Terraform AWS ECR Usage Guide](https://github.com/sourcefuse/terraform-aws-arc-ecr/blob/main/docs/module-usage-guide/README.md).
+
+## Quickstart
 
 ```hcl
 module "ecr" {
@@ -80,6 +105,20 @@ module "ecr" {
 - [ECR with Registry Scanning](./examples/registry-scanning/)
 - [ECR with Repository Creation Template](./examples/repository-template/)
 
+## Required Inputs
+
+| Name | Type | Description |
+|------|------|-------------|
+| `repositories` | `map(object)` | Map of repository names to configuration |
+## Key Outputs
+
+| Name | Description |
+|------|-------------|
+| `repository_urls` | Map of repository name to URL |
+| `repository_arns` | Map of repository name to ARN |
+## Full Variable & Output Reference
+
+The complete inputs/outputs reference is auto-generated below.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -167,6 +206,11 @@ For Example
 git commit -m "your commit message #major"
 ```
 By specifying this , it will bump the version and if you don't specify this in your commit message then by default it will consider patch and will bump that accordingly
+
+
+## Contributing
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for commit conventions and development setup.
 
 ## Authors
 
